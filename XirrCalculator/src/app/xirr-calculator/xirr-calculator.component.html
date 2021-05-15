@@ -1,18 +1,70 @@
+<div style="padding-top: 15px;">
+
+</div>
+
+<div class="row">
+  <div class="col-3"><h2>XIRR:</h2></div>
+  <div class="col-3"><h1>{{ rate | number: '.2-2' }}</h1></div>
+  <div class="col-3"><button type="button" class="btn btn-info" (click)="getXirrCalculation()">Calculate</button></div>
+  <!-- <div class="col-2"><button type="button" class="btn btn-light" (click)="clear()">Clear</button></div> -->
+</div>
+
+<div class="row" style="padding: 10px;">
+  <hr>
+</div>
 
 
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Date</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of cashFlows; let i = index">
+      <td>{{ i }}</td>
+      <td>{{ item.date |  date: 'dd-MMM-yyyy'}}</td>
+      <td>{{ item.amount }}</td>
+    </tr>
+  </tbody>
+</table>
 
 
-
-
-
-<div class="row g-3">
-  <div class="col-sm-7">
-    <input type="text" class="form-control" placeholder="City" aria-label="City">
-  </div>
-  <div class="col-sm">
-    <input type="text" class="form-control" placeholder="State" aria-label="State">
-  </div>
-  <div class="col-sm">
-    <input type="text" class="form-control" placeholder="Zip" aria-label="Zip">
+<div class="row">
+  <div class="col-5">
+  <div class="form-floating mb-3">
+    <input type="string" [(ngModel)]="txtDate" class="form-control" id="floatingInput" placeholder="Date">
+    <label for="floatingInput">yyyy-MM-dd</label>
   </div>
 </div>
+<div class="col-4">
+  <div class="form-floating">
+    <input type="number" [(ngModel)]="txtAmount" class="form-control" id="floatingPassword" placeholder="Amount">
+    <label for="floatingPassword">Amount</label>
+  </div>
+</div>
+<div class="col-2">
+  <button type="button" class="btn btn-secondary" (click)="addTransaction()">Add</button>
+</div>
+</div>
+
+<!-- <div class="row">
+  <div class="col-5">
+    <input type="text" [(ngModel)]="txtDate" class="form-control" placeholder="yyyy-MM-dd" aria-label="First name">
+  </div>
+  <div class="col-4">
+    <input type="number" [(ngModel)]="txtAmount" class="form-control" placeholder="Amount" aria-label="Last name">
+  </div>
+  <div class="col-2">
+    <button type="button" class="btn btn-secondary" (click)="addTransaction()">Add</button>
+  </div>
+</div> -->
+
+<div class="row" style="padding: 10px;">
+  <div class="col">
+    <button type="button" class="btn btn-light" (click)="clear()">Clear</button>
+  </div>
+</div>
+
